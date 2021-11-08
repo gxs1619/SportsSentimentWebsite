@@ -1,0 +1,26 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify59ff38cefccf4-staging-10951-authRole",
+      "UnauthRoleArn": "arn:aws:iam::123231256251:role/amplify-amplify59ff38cefccf4-staging-10951-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::123231256251:role/amplify-amplify59ff38cefccf4-staging-10951-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-amplify59ff38cefccf4-staging-10951-deployment",
+      "UnauthRoleName": "amplify-amplify59ff38cefccf4-staging-10951-unauthRole",
+      "StackName": "amplify-amplify59ff38cefccf4-staging-10951",
+      "StackId": "arn:aws:cloudformation:us-east-2:123231256251:stack/amplify-amplify59ff38cefccf4-staging-10951/93b3e150-4030-11ec-a757-060e9e12641c",
+      "AmplifyAppId": "d3qvfh4ufp9n3v"
+    },
+    "categories": {
+      "auth": {
+        "sportssentimenta2d8bce4": {}
+      },
+      "storage": {
+        "sportssentimentb597adce": {
+          "bucketName": "sports-sentiment-storage",
+          "region": "us-east-1"
+        }
+      }
+    }
+  }
+}

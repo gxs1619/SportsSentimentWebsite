@@ -1,0 +1,96 @@
+body {
+    background-color: #2e2e2e;
+    font-family: monospace;
+}
+
+.title {
+    color: white;
+}
+
+.textbody{
+    background-color: #1a1a1a;
+    max-width: 500px;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+form {
+    display: table;
+}
+
+.inputline{
+    display: table-row;
+}
+
+.sportslabel{
+    padding: 5px;
+    margin: 5px;
+}
+
+.labelCell{
+    display: table-cell;
+}
+
+input[type=text], select{
+    padding: 5px;
+    margin: 5px;
+    display: table-cell;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #19236e;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: table-cell;
+}
+
+
+/*Result table styles below*/
+
+.resultTable {
+    display: table;
+    width: 100%;
+    align-content: center;
+}
+
+.teamTable{
+    display: table;
+    background-color: #ccc;
+    text-align: center;
+    width: 175px;
+    color: black;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.resultRow{
+    display: table-row;
+    border: 1px dotted green;
+}
+
+.resultCell{
+    display: table-cell;
+}
+
+
+

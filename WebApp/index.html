@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Sentiment Predictor</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="app.js"></script>
+</head>
+<body>
+    <div class="center">
+        <h1 class="title">Sports Sentiment Predictor</h1>
+        <h3 class="title">Designed and written by Team 3 for SWEN-514</h3>
+    </div>
+    <div class="textbody">
+        <h3>Welcome to the Sports Sentiment Predictor</h3>
+        <p>Use the boxes below to enter in the names of the teams competing, 
+            the city thats hosting the game, and the date the game is occurring on. 
+            Our website will search twitter and determine the general sentiment of all 
+            tweets related to the specified game. It will then report which team had the most
+            positive sentiment towards it, along with its confidence in the prediction.
+        </p>
+        <form onsubmit="confirmParameters()">
+            <div class="inputline">
+                <label class=labelCell>Team 1 Name (Dont include city)</label>
+                <input type="text" id="team1name" name="team1name" placeholder="">
+            </div>
+            <div class="inputline">
+                <label class=labelCell>Team 2 Name (Dont include city)</label>
+                <input type="text" id="team2name" name="team2name" placeholder="">
+            </div>
+            <div class="inputline">
+                <label class=labelCell>City (eg. Rochester, NY)</label>
+                <input type="text" id="city" name="city" placeholder="">
+            </div>
+            <div class="inputline">
+                <label class=labelCell>Date (mm/dd/yyyy)</label>
+                <input type="text" id="date" name="date" placeholder="">
+            </div>
+            <div class="inputline">
+                <label class="sportslabel">Sport: </label> 
+                <select type="text" id="sport" name="sport" placeholder="Date of game">
+                    <option value="Football">Football</option>
+                    <option value="Baseball">Baseball</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Hockey">Hockey</option>
+                    <option value="Basketball">Basketball</option>
+                </select>
+            </div>
+            <div class="inputline">
+                <input type="submit" value = "Submit">
+            </div>
+        </form>
+    </div>
+    <div class="textbody">
+        <h3>Results:</h3>
+        <h5>Total tweets analyzed: 15930</h5>
+        <div id="teamTable" class="resultTable">
+            <div class="resultRow">
+                <div class=resultCell>
+                    <div id="team1Table" class="teamTable">
+                        <div class="resultRow">
+                            <p id="team1" class="resultCell">Team name:</p>
+                            <p id="result1" class="resultCell">Favored</p>
+                        </div>
+                        <div class="resultRow">
+                            <p class="resultCell">Confidence:</p>
+                            <p id="confidence1">69%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class=resultCell>
+                    <div id="team2Table" class="teamTable">
+                        <div class="resultRow">
+                            <p id="team2" class="resultCell">Team Name:</p>
+                            <p id="result2" class="resultCell">Not Favored</p>
+                        </div>
+                        <div class="resultRow">
+                            <p class="resultCell">Confidence:</p>
+                            <p id="confidence2">96%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
