@@ -10,7 +10,30 @@ function confirmParameters(){
     city = document.forms[0].city.value;
     date = document.forms[0].date.value;
     sport = document.forms[0].sport.value;
-    alert(t1n + " " + t2n + " " + city + " " + date + " " + sport)
+
+    if(dateValidation(date) && inputVal(t1n) && inputVal(t1n) && inputVal(t1n)){
+        alert(t1n + " " + t2n + " " + city + " " + date + " " + sport)
+    }else{
+        alert("Invalid input format")
+    }
+}
+
+function inputVal(inp){
+    if(inp == ""){
+        return false;
+    }
+}
+
+function dateValidation(date){
+    if(date == ""){
+        return false;
+    }
+    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    if(!(date_regex.test(date))){
+        return false;
+    }else{
+        return true;
+    }
 }
 
 
