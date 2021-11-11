@@ -10,27 +10,29 @@ function confirmParameters(){
     city = document.forms[0].city.value;
     date = document.forms[0].date.value;
     sport = document.forms[0].sport.value;
-
+    console.log(t1n + " " + t2n + " " + city + " " + date + " " + sport)
     if(dateValidation(date) && inputVal(t1n) && inputVal(t2n) && inputVal(city)){
-        alert(t1n + " " + t2n + " " + city + " " + date + " " + sport)
+        alert(t1n + " \n" + t2n + " \n" + city + " \n" + date + " \n" + sport)
     }else{
-        let alertString = []
+        let alertString = ""
         if(!dateValidation(date)){
-            alertString.push("Date missing or format incorrect")
+            alertString = alertString + "Date missing or format incorrect \n"
         }if(!inputVal(t1n)){
-            alertString.push("Team 1 name missing or format incorrect")
+            alertString = alertString + "Team 1 name missing or format incorrect \n"
         }if(!inputVal(t2n)){
-            alertString.push("Team 2 name missing or format incorrect")
+            alertString = alertString + "Team 2 name missing or format incorrect \n"
         }if(!inputVal(city)){
-            alertString.push("City name missing or format incorrect")
+            alertString = alertString + "City name missing or format incorrect \n"
         }
-        alert("Invalid input format")
+        alert(alertString)
     }
 }
 
 function inputVal(inp){
     if(inp == ""){
         return false;
+    }else{
+        return true
     }
 }
 
