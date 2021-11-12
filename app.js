@@ -1,7 +1,3 @@
-var AWS = require("aws-sdk");
-const { json } = require("stream/consumers");
-var WebSock = require("ws")
-
 var g_team1Name = ""
 var g_team2Name = ""
 
@@ -55,7 +51,7 @@ function dateValidation(date){
     }
 }
 
-var gameInput = new WebSock(window.location.href + "/gameData")
+var ws = new WebSocket("ws://" + window.location.href + "/gameData")
 
 gameInput.onmessage = function(event){
     updateTeamData(event.data)
