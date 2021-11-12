@@ -51,9 +51,9 @@ function dateValidation(date){
     }
 }
 
-var ws = new WebSocket("wss://" + window.location.href + "/gameData")
+var ws = new WebSocket("wss://" + window.location.href + "gameData")
 
-gameInput.onmessage = function(event){
+ws.onmessage = function(event){
     updateTeamData(event.data)
 }
 
