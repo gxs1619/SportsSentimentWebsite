@@ -10,3 +10,15 @@
     Two cards at the bottom that show the general sentiment, and the confidence
     of the sentiment.
 
+
+# Request data
+    The format of the incoming data for comprehend results MUST be in the following format
+            ```json
+                {
+                   "t1Confidence" : "",
+                   "t2Confidence" : "",
+                   "t1Result" : "",
+                   "t2Result" : "",
+                   "totalTweets" : "",
+                }
+            ```
