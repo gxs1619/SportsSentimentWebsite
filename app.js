@@ -1,5 +1,8 @@
-var g_team1Name = ""
-var g_team2Name = ""
+var g_team1Name = "";
+var g_team2Name = "";
+
+var apiURL = "";
+
 
 /**
  * This function is called when the user submits the form for 
@@ -51,19 +54,42 @@ function dateValidation(date){
     }
 }
 
-var ws = new WebSocket("wss://" + window.location.href + "gameData")
+/**
+ * Below is code that handles the POST and GET requests.
+ */
 
-ws.onmessage = function(event){
-    updateTeamData(event.data)
+
+var http = new XMLHttpRequest();
+
+
+
+function postUserInput(team1name, team2name, city, sport, date){
+    var params = 'team1=' + team1name
+                + '&team2=' + team2name
+                + '&city=' + city
+                + '&sport=' + sport
+                + '&date=' + date
+
+    http.open("POST", apiURL, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {
+        if(http.readyState == 4 && http.status == 200){
+            alert(http.responseText);
+        }
+    }
+    http.send(params);
+    
 }
 
 
+
 function updateTeamData(data){
-    jsonData = JSON.parse(data)
-    console.log(jsonData)
-    document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed :" + jsonData["totalTweets"]
-    updateTeam1Results(g_team1Name, jsonData["t1Confidence"], jsonData["t1Result"])
-    updateTeam2Results(g_team2Name, jsonData["t2Confidence"], jsonData["t2Result"])
+    jsonData = JSON.parse(data);
+    console.log(jsonData);
+    document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed :" + jsonData["totalTweets"];
+    updateTeam1Results(g_team1Name, jsonData["t1Confidence"], jsonData["t1Result"]);
+    updateTeam2Results(g_team2Name, jsonData["t2Confidence"], jsonData["t2Result"]);
 }
 
 /**
