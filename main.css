@@ -8,6 +8,20 @@ body {
     color: white;
 }
 
+.button{
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    background-color: #3366ff;
+    text-align: center;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: #002080;
+}
+
 .textbody{
     background-color: #1a1a1a;
     max-width: 500px;

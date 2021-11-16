@@ -25,15 +25,19 @@
         <form onsubmit="confirmParameters()">
             <div class="inputline">
                 <label class=labelCell>Team 1 Name (Dont include city)</label>
-                <input type="text" id="team1name" name="team1name" placeholder="Team">
+                <input type="text" id="team1name" name="team1name" placeholder="Team 1">
+            </div>
+            <div class="inputline">
+                <label class=labelCell>Team 1's City</label>
+                <input type="text" id="city1" name="city1" placeholder="Team 1 City">
             </div>
             <div class="inputline">
                 <label class=labelCell>Team 2 Name (Dont include city)</label>
-                <input type="text" id="team2name" name="team2name" placeholder="Team">
+                <input type="text" id="team2name" name="team2name" placeholder="Team 2">
             </div>
             <div class="inputline">
-                <label class=labelCell>City name</label>
-                <input type="text" id="city" name="city" placeholder="City name">
+                <label class=labelCell>Team 2's City</label>
+                <input type="text" id="city2" name="city2" placeholder="Team 2 City">
             </div>
             <div class="inputline">
                 <label class=labelCell>Date (mm/dd/yyyy)</label>
@@ -87,7 +91,7 @@
         </div>
     </div>
     <div class="footer">
-
+        <button class="button" onclick="getFinalResults()">Refresh</button>
     </div>
 </body>
 </html>
