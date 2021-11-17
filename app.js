@@ -19,9 +19,10 @@ function confirmParameters(){
     sport = document.forms[0].sport.value;
     console.log(t1n + " " + city1 + " " + t2n + " " + city2 + " " + date + " " + sport)
     if(dateValidation(date) && inputVal(t1n) && inputVal(t2n) && inputVal(city1) && inputVal(city2)){
-        g_team1Name = t1n
-        g_team2Name = t2n
-        alert(t1n + " \n" + city1 + " \n" + t2n + " \n" + city2 + " \n" + date + " \n" + sport)
+        g_team1Name = t1n;
+        g_team2Name = t2n;
+        postUserInput(t1n, city1, t2n, city2, sport, date);
+        //alert(t1n + " \n" + city1 + " \n" + t2n + " \n" + city2 + " \n" + date + " \n" + sport)
     }else{
         let alertString = ""
         if(!dateValidation(date)){
@@ -89,23 +90,23 @@ function dateValidation(date){
 function postUserInput(team1name, city1, team2name, city2, sport, date){
 
     let http = new XMLHttpRequest();
-    // var params = 'team1=' + team1name
-    //             + '&city1=' + city1
-    //             + '&team2=' + team2name
-    //             + '&city2=' + city2
-    //             + '&sport=' + sport
-    //             + '&date=' + date
+    var params = 'firstTeamName=' + team1name
+                + '&secondTeamName=' + team2name
+                + '&firstTeamCity=' + city1
+                + '&secondTeamCity=' + city2
+                + '&sportName=' + sport
+                + '&gameDate=' + date
 
-    var params = {
-        "team1Name" : team1name,
-        "team1City" : city1,
-        "team2Name" : team2name,
-        "team2City" : city2,
-        "sport" : sport,
-        "date" : date
-    }
+    // var params = {
+    //     "firstTeamName" : team1name,
+    //     "secondTeamName" : team2name,
+    //     "firstTeamCity" : city1,
+    //     "secondTeamCity" : city2,
+    //     "sportName" : sport,
+    //     "gameDate" : date
+    // }
 
-    http.open("POST", apiURL, true);
+    http.open("GET", apiURL + params, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     http.onreadystatechange = function() {
@@ -113,13 +114,13 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
             alert(http.responseText);
         }
     }
-    http.send(params);
+    http.send(null);
     
 }
 
 function getFinalResults(){
     let http = new XMLHttpRequest();
-    http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamdata.json", true);
+    http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamData.json", true);
     http.setRequestHeader('Content-type', 'application/json');
     http.setRequestHeader('Access-Control-Allow-Origin', '*');
 
