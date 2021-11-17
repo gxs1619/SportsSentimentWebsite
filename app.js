@@ -39,6 +39,11 @@ function confirmParameters(){
     }
 }
 
+/**
+ * Simple checker to make sure values arent empty strings
+ * @param inp input value
+ * @returns whether input is empty or not
+ */
 function inputVal(inp){
     if(inp == ""){
         return false;
@@ -47,6 +52,11 @@ function inputVal(inp){
     }
 }
 
+/**
+ * Validates a date in format of yyyy/mm/dd
+ * @param date date input to be checked
+ * @returns whether date is correct
+ */
 function dateValidation(date){
     if(date == ""){
         return false;
@@ -66,16 +76,34 @@ function dateValidation(date){
 
 
 
-
+/**
+ * This function is used to send the user input to the specified URL.
+ * IT assumes it takes the parameters in the URL.
+ * @param team1name name of team 1
+ * @param city1     city of team 1
+ * @param team2name name of team 2
+ * @param city2     city of team 2
+ * @param sport     sport the two teams play
+ * @param date      date of game
+ */
 function postUserInput(team1name, city1, team2name, city2, sport, date){
 
     let http = new XMLHttpRequest();
-    var params = 'team1=' + team1name
-                + '&city1=' + city1
-                + '&team2=' + team2name
-                + '&city2=' + city2
-                + '&sport=' + sport
-                + '&date=' + date
+    // var params = 'team1=' + team1name
+    //             + '&city1=' + city1
+    //             + '&team2=' + team2name
+    //             + '&city2=' + city2
+    //             + '&sport=' + sport
+    //             + '&date=' + date
+
+    var params = {
+        "team1Name" : team1name,
+        "team1City" : city1,
+        "team2Name" : team2name,
+        "team2City" : city2,
+        "sport" : sport,
+        "date" : date
+    }
 
     http.open("POST", apiURL, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -89,7 +117,16 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     
 }
 
+<<<<<<< HEAD
 function getFinalResults(){
+=======
+/**
+ * This function grabs the comprehend results from the specified
+ * URL. It then updates the webpage with the recieved data.
+ */
+function getFinalResult(){
+    alert("getting results rn")
+>>>>>>> 9c123207b6725c5f800c8122b2842e4146e75c1a
     let http = new XMLHttpRequest();
     http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamdata.json", true);
     http.setRequestHeader('Content-type', 'application/json');
@@ -108,7 +145,11 @@ function getFinalResults(){
 }
 
 
-
+/**
+ * This helper function does the initial data parse, and sends it to the two helper
+ * functions that each update the individual team cards
+ * @param data raw response data.
+ */
 function updateTeamData(data){
     jsonData = JSON.parse(data);
     //console.log(jsonData);
