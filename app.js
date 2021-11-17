@@ -39,6 +39,11 @@ function confirmParameters(){
     }
 }
 
+/**
+ * Simple checker to make sure values arent empty strings
+ * @param inp input value
+ * @returns whether input is empty or not
+ */
 function inputVal(inp){
     if(inp == ""){
         return false;
@@ -47,6 +52,11 @@ function inputVal(inp){
     }
 }
 
+/**
+ * Validates a date in format of yyyy/mm/dd
+ * @param date date input to be checked
+ * @returns whether date is correct
+ */
 function dateValidation(date){
     if(date == ""){
         return false;
@@ -65,7 +75,16 @@ function dateValidation(date){
 
 
 
-
+/**
+ * This function is used to send the user input to the specified URL.
+ * IT assumes it takes the parameters in the URL.
+ * @param team1name name of team 1
+ * @param city1     city of team 1
+ * @param team2name name of team 2
+ * @param city2     city of team 2
+ * @param sport     sport the two teams play
+ * @param date      date of game
+ */
 function postUserInput(team1name, city1, team2name, city2, sport, date){
     let http = new XMLHttpRequest();
     var params = 'team1=' + team1name
@@ -87,6 +106,10 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     
 }
 
+/**
+ * This function grabs the comprehend results from the specified
+ * URL. It then updates the webpage with the recieved data.
+ */
 function getFinalResult(){
     alert("getting results rn")
     let http = new XMLHttpRequest();
@@ -100,7 +123,11 @@ function getFinalResult(){
 }
 
 
-
+/**
+ * This helper function does the initial data parse, and sends it to the two helper
+ * functions that each update the individual team cards
+ * @param data raw response data.
+ */
 function updateTeamData(data){
     jsonData = JSON.parse(data);
     console.log(jsonData);
