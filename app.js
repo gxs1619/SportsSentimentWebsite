@@ -106,7 +106,7 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     //     "gameDate" : date
     // }
 
-    http.open("GET", apiURL + params, true);
+    http.open("GET", "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     http.onreadystatechange = function() {
