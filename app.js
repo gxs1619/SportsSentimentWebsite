@@ -117,16 +117,7 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     
 }
 
-<<<<<<< HEAD
 function getFinalResults(){
-=======
-/**
- * This function grabs the comprehend results from the specified
- * URL. It then updates the webpage with the recieved data.
- */
-function getFinalResult(){
-    alert("getting results rn")
->>>>>>> 9c123207b6725c5f800c8122b2842e4146e75c1a
     let http = new XMLHttpRequest();
     http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamdata.json", true);
     http.setRequestHeader('Content-type', 'application/json');
