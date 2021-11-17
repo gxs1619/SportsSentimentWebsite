@@ -143,11 +143,22 @@ function getFinalResults(){
  * @param data raw response data.
  */
 function updateTeamData(data){
+    let team1Result = "";
+    let team2Result = "";
     jsonData = JSON.parse(data);
     //console.log(jsonData);
     document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed :" + jsonData["totalTweets"];
-    updateTeam1Results(jsonData["team1Name"], jsonData["t1Confidence"], jsonData["t1Result"]);
-    updateTeam2Results(jsonData["team2Name"], jsonData["t2Confidence"], jsonData["t2Result"]);
+
+    if(jsonData["likelyWinner"] == jsonData["team1Name"]){  //if likely winner is the first team, set results
+        team1Result = "Winner";
+        team2Result = "Loser"
+    }
+    if (jsonData["likelyWinner"] == jsonData["team2Name"]){ //if likely winner is second team, set results
+        team2Result = "Winner";
+        team1Result = "Loser";
+    }
+    updateTeam1Results(jsonData["team1Name"], jsonData["team1Sentiment"], team1Result);
+    updateTeam2Results(jsonData["team2Name"], jsonData["team2Sentiment"], team2Result);
 }
 
 /**
