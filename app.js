@@ -87,12 +87,21 @@ function dateValidation(date){
  */
 function postUserInput(team1name, city1, team2name, city2, sport, date){
     let http = new XMLHttpRequest();
-    var params = 'team1=' + team1name
-                + '&city1=' + city1
-                + '&team2=' + team2name
-                + '&city2=' + city2
-                + '&sport=' + sport
-                + '&date=' + date
+    // var params = 'team1=' + team1name
+    //             + '&city1=' + city1
+    //             + '&team2=' + team2name
+    //             + '&city2=' + city2
+    //             + '&sport=' + sport
+    //             + '&date=' + date
+
+    var params = {
+        "team1Name" : team1name,
+        "team1City" : city1,
+        "team2Name" : team2name,
+        "team2City" : city2,
+        "sport" : sport,
+        "date" : date
+    }
 
     http.open("POST", apiURL, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
