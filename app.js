@@ -1,9 +1,9 @@
-const { HttpResponse } = require("aws-sdk");
-
 var g_team1Name = "";
 var g_team2Name = "";
 
 var apiURL = "";
+//AWS.config.access
+
 
 
 /**
@@ -51,10 +51,11 @@ function dateValidation(date){
     if(date == ""){
         return false;
     }
-    var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-    if(!(date_regex.test(date))){
-        return false;
-    }else{
+    // var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+    // if(!(date_regex.test(date))){
+    //     return false;
+    // }
+    else{
         return true;
     }
 }
@@ -67,6 +68,7 @@ function dateValidation(date){
 
 
 function postUserInput(team1name, city1, team2name, city2, sport, date){
+
     let http = new XMLHttpRequest();
     var params = 'team1=' + team1name
                 + '&city1=' + city1
@@ -87,15 +89,21 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     
 }
 
-function getFinalResult(){
-    alert("getting results rn")
+function getFinalResults(){
     let http = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() { 
-        if (http.readyState == 4 && http.status == 200)
+    http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamdata.json", true);
+    http.setRequestHeader('Content-type', 'application/json');
+    http.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+    http.onreadystatechange = function() { 
+        if (http.readyState == 4 && http.status == 200){
             //callback(xmlHttp.responseText);
-            updateTeamData(http.responseText[0]);
+            //console.log("data: " + http.responseText);
+            updateTeamData(http.responseText);
+        }else{
+            console.log(http.status);
+        }
     }
-    http.open("GET", apiURL, true);
     http.send(null);
 }
 
@@ -103,10 +111,10 @@ function getFinalResult(){
 
 function updateTeamData(data){
     jsonData = JSON.parse(data);
-    console.log(jsonData);
+    //console.log(jsonData);
     document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed :" + jsonData["totalTweets"];
-    updateTeam1Results(g_team1Name, jsonData["t1Confidence"], jsonData["t1Result"]);
-    updateTeam2Results(g_team2Name, jsonData["t2Confidence"], jsonData["t2Result"]);
+    updateTeam1Results(jsonData["team1Name"], jsonData["t1Confidence"], jsonData["t1Result"]);
+    updateTeam2Results(jsonData["team2Name"], jsonData["t2Confidence"], jsonData["t2Result"]);
 }
 
 /**
@@ -119,7 +127,7 @@ function updateTeam1Results(teamName, confidence, result){
     document.getElementById("confidence1").innerHTML = confidence + ":"
 }
 
-function updateTeam2Results(){
+function updateTeam2Results(teamName, confidence, result){
     document.getElementById("team2").innerHTML = teamName + ":"
     document.getElementById("result2").innerHTML = result + ":"
     document.getElementById("confidence2").innerHTML = confidence + ":"
