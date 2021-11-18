@@ -107,15 +107,16 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     // }
 
     http.open("GET", "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params, true);
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
+    //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    console.log("https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params);
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200){
-            alert(http.responseText);
+            console.log(http.responseText);
+        }else{
+            console.log(http.responseText);
         }
     }
     http.send(null);
-    
 }
 
 function getFinalResults(){
@@ -145,9 +146,9 @@ function getFinalResults(){
 function updateTeamData(data){
     let team1Result = "";
     let team2Result = "";
-    jsonData = JSON.parse(data);
-    //console.log(jsonData);
-    document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed :" + jsonData["totalTweets"];
+    jsonData = JSON.parse(data)["body"];
+    console.log(jsonData);
+    document.getElementById("totalTweets").innerHTML = "Total number of tweets analyzed : " + jsonData["tweetsAnalyzed"];
 
     if(jsonData["likelyWinner"] == jsonData["team1Name"]){  //if likely winner is the first team, set results
         team1Result = "Winner";
@@ -157,22 +158,24 @@ function updateTeamData(data){
         team2Result = "Winner";
         team1Result = "Loser";
     }
-    updateTeam1Results(jsonData["team1Name"], jsonData["team1Sentiment"], team1Result);
-    updateTeam2Results(jsonData["team2Name"], jsonData["team2Sentiment"], team2Result);
+    updateTeam1Results(jsonData["team1Name"], jsonData["team1Sentiment"], team1Result, jsonData["team1HighestSentiment"]);
+    updateTeam2Results(jsonData["team2Name"], jsonData["team2Sentiment"], team2Result, jsonData["team2HighestSentiment"]);
 }
 
 /**
  * Below functions will be used when we're actually 
  * needing to get data from the website. 
  */
-function updateTeam1Results(teamName, confidence, result){
-    document.getElementById("team1").innerHTML = teamName + ":"
-    document.getElementById("result1").innerHTML = result + ":"
-    document.getElementById("confidence1").innerHTML = confidence + ":"
+function updateTeam1Results(teamName, confidence, result, score){
+    document.getElementById("team1").innerHTML = teamName.charAt(0).toUpperCase() + teamName.slice(1) + ":";
+    document.getElementById("result1").innerHTML = result;
+    document.getElementById("confidence1").innerHTML = confidence;
+    document.getElementById("score1").innerHTML = score.toFixed(2);
 }
 
-function updateTeam2Results(teamName, confidence, result){
-    document.getElementById("team2").innerHTML = teamName + ":"
-    document.getElementById("result2").innerHTML = result + ":"
-    document.getElementById("confidence2").innerHTML = confidence + ":"
+function updateTeam2Results(teamName, confidence, result, score){
+    document.getElementById("team2").innerHTML = teamName.charAt(0).toUpperCase() + teamName.slice(1) + ":";
+    document.getElementById("result2").innerHTML = result;
+    document.getElementById("confidence2").innerHTML = confidence;
+    document.getElementById("score2").innerHTML = score.toFixed(2);
 }
