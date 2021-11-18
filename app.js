@@ -108,6 +108,7 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
 
     http.open("GET", "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params, true);
     //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.setRequestHeader('Access-Control-Allow-Origin', '*');
     console.log("https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params);
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200){
@@ -158,8 +159,8 @@ function updateTeamData(data){
         team2Result = "Winner";
         team1Result = "Loser";
     }
-    updateTeam1Results(jsonData["team1Name"], jsonData["team1Sentiment"], team1Result, jsonData["team1HighestSentiment"]);
-    updateTeam2Results(jsonData["team2Name"], jsonData["team2Sentiment"], team2Result, jsonData["team2HighestSentiment"]);
+    updateTeam1Results(jsonData["team1Name"], jsonData["team1Sentiment"], team1Result, jsonData["team1PositiveSentiment"]);
+    updateTeam2Results(jsonData["team2Name"], jsonData["team2Sentiment"], team2Result, jsonData["team2PositiveSentiment"]);
 }
 
 /**

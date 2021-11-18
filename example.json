@@ -1,0 +1,10 @@
+{
+    "team1Name": "bills",
+    "team2Name": "colts",
+    "team1Sentiment": "Neutral",
+    "team2Sentiment": "Neutral",
+    "team1HighestSentiment": 3.1476812958717346,
+    "team2HighestSentiment": 2.4551337361335754,
+    "likelyWinner": "bills",
+    "tweetsAnalyzed": 247
+}
