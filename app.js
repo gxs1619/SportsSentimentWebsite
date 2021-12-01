@@ -1,12 +1,24 @@
 var g_team1Name = "";
 var g_team2Name = "";
 
-var apiURL = "";
+var apiURL = "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?";
 //AWS.config.access
+
+
+/**
+ * This function is used to submit the api url to update it when building it through cloudformation
+ * 
+ */
+
+function updateAPIUrl(){
+    apiURL = document.getElementById("apiurl").value;
+    console.log(apiURL);
+}
 
 
 
 /**
+ * ===========================================================================================================
  * This function is called when the user submits the form for 
  * team/game information.
  */
@@ -72,6 +84,7 @@ function dateValidation(date){
 }
 
 /**
+ * ==============================================================================================================
  * Below is code that handles the POST and GET requests.
  */
 
@@ -106,10 +119,10 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     //     "gameDate" : date
     // }
 
-    http.open("GET", "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params, true);
+    http.open("GET", apiURL + params, true);
     //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.setRequestHeader('Access-Control-Allow-Origin', '*');
-    console.log("https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?" + params);
+    console.log(apiURL + params);
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200){
             console.log(http.responseText);
@@ -118,6 +131,8 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
         }
     }
     http.send(null);
+    //call the get function 5 seconds after get function is sent
+    setTimeout(() => {getFinalResults();}, 5000);
 }
 
 function getFinalResults(){
