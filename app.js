@@ -29,7 +29,7 @@ function confirmParameters(){
     city2 = document.forms[0].city2.value;
     date = document.forms[0].date.value;
     sport = document.forms[0].sport.value;
-    console.log(t1n + " " + city1 + " " + t2n + " " + city2 + " " + date + " " + sport)
+    //console.log(t1n + " " + city1 + " " + t2n + " " + city2 + " " + date + " " + sport)
     if(dateValidation(date) && inputVal(t1n) && inputVal(t2n) && inputVal(city1) && inputVal(city2)){
         g_team1Name = t1n;
         g_team2Name = t2n;
@@ -121,8 +121,8 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
 
     http.open("GET", apiURL + params, true);
     //http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    http.setRequestHeader('Access-Control-Allow-Origin', '*');
     console.log(apiURL + params);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200){
             console.log(http.responseText);
