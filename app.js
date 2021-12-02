@@ -137,7 +137,7 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
 
 function getFinalResults(){
     let http = new XMLHttpRequest();
-    http.open("GET", "https://sportssentiment1.s3.amazonaws.com/teamData.json", true);
+    http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamData.json", true);
     http.setRequestHeader('Content-type', 'application/json');
     http.setRequestHeader('Access-Control-Allow-Origin', '*');
 
