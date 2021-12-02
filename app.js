@@ -132,12 +132,12 @@ function postUserInput(team1name, city1, team2name, city2, sport, date){
     }
     http.send(null);
     //call the get function 5 seconds after get function is sent
-    setTimeout(() => {getFinalResults();}, 5000);
+    //setTimeout(() => {getFinalResults();}, 5000);
 }
 
 function getFinalResults(){
     let http = new XMLHttpRequest();
-    http.open("GET", "https://sportssentiment.s3.amazonaws.com/teamData.json", true);
+    http.open("GET", "https://sportssentiment1.s3.amazonaws.com/teamData.json", true);
     http.setRequestHeader('Content-type', 'application/json');
     http.setRequestHeader('Access-Control-Allow-Origin', '*');
 
