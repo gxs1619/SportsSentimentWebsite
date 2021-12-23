@@ -1,7 +1,7 @@
 var g_team1Name = "";
 var g_team2Name = "";
 
-var apiURL = "https://eqlbpvckkh.execute-api.us-east-1.amazonaws.com/test?";
+var apiURL = "https://7k5k3izfq8.execute-api.us-east-1.amazonaws.com/LATEST/sports?";
 //AWS.config.access
 
 
